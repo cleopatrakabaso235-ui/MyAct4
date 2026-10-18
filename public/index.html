@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Timetable & Goals</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">ICT251 • STUDENT PORTAL</p>
+      <h1>Student Timetable & Goals</h1>
+      <p>Organise your classes, manage your schedule and track your learning goals.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="stats">
+      <div class="stat-card">
+        <span>Total courses</span>
+        <strong id="totalCourses">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Scheduled days</span>
+        <strong id="totalDays">0</strong>
+      </div>
+      <div class="stat-card">
+        <span>Study goals</span>
+        <strong id="totalGoals">0</strong>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2 id="formTitle">Add a course</h2>
+          <p>Enter your course and scheduling details below.</p>
+        </div>
+      </div>
+
+      <div id="message" class="message" role="status" aria-live="polite"></div>
+
+      <form id="courseForm">
+        <input type="hidden" id="courseId">
+
+        <div class="form-grid">
+          <label>
+            Course code
+            <input id="course_code" maxlength="200" placeholder="ICT251" required>
+          </label>
+
+          <label>
+            Course name
+            <input id="course_name" maxlength="200" placeholder="Web Development" required>
+          </label>
+
+          <label>
+            Day of week
+            <select id="day_of_week" required>
+              <option value="">Choose a day</option>
+              <option>Monday</option>
+              <option>Tuesday</option>
+              <option>Wednesday</option>
+              <option>Thursday</option>
+              <option>Friday</option>
+              <option>Saturday</option>
+              <option>Sunday</option>
+            </select>
+          </label>
+
+          <label>
+            Start time
+            <input id="start_time" type="time" required>
+          </label>
+
+          <label>
+            End time
+            <input id="end_time" type="time" required>
+          </label>
+
+          <label>
+            Classroom / venue
+            <input id="room" maxlength="200" placeholder="Lab 1" required>
+          </label>
+
+          <label class="full-width">
+            Learning goal
+            <textarea id="goal" maxlength="200" rows="3"
+              placeholder="What do you want to achieve in this course?" required></textarea>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="saveButton" class="btn primary">Save course</button>
+          <button type="button" id="cancelButton" class="btn secondary" hidden>Cancel edit</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="section-heading">
+        <div>
+          <h2>Your timetable</h2>
+          <p>Manage your saved courses below.</p>
+        </div>
+        <button id="refreshButton" class="btn secondary" type="button">Refresh</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Course</th>
+              <th>Day</th>
+              <th>Time</th>
+              <th>Room</th>
+              <th>Learning goal</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="courseTable">
+            <tr><td colspan="7">Loading courses...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p id="recordCount" class="record-count"></p>
+    </section>
+  </main>
+
+  <footer>
+    ICT251 Activity 4 • Student Timetable & Goals Management System
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
